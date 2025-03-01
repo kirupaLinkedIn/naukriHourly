@@ -28,9 +28,9 @@ class NaukriPage {
     await this.page.waitForLoadState('load');
 
     console.log('Filling in username');
-    await this.page.locator(this.naukriUsername).fill(username);
+    await this.page.locator("//input[@id='usernameField']").fill(username);
     console.log('Filling in password');
-    await this.page.locator(this.naukriPassword).fill(password);
+    await this.page.locator("//input[@id='passwordField']").fill(password);
     console.log('Clicking submit button');
     await this.page.locator(this.naukriSubmitButton).click();
   }
