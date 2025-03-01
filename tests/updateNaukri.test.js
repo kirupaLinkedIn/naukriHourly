@@ -23,7 +23,7 @@ class NaukriPage {
   // Login Method
   async login(username, password) {
     console.log('Navigating to Naukri Login Page');
-    await this.page.goto(this.naukriHomeURL, { waitUntil: 'load' });
+    await this.page.goto(this.naukriHomeURL);
     console.log('Navigated to Naukri Login Page: ' + this.naukriHomeURL);
     await this.page.waitForLoadState('load');
 
@@ -31,9 +31,9 @@ class NaukriPage {
     await this.page.locator(this.loginPage).click();
 
     console.log('Filling in username');
-    await this.page.locator("//input[@id='usernameField']").fill(username);
+    await this.page.locator("//input[contains(@placeholder,'Enter your active Email ID / Username')]").type(username);
     console.log('Filling in password');
-    await this.page.locator("//input[@id='passwordField']").fill(password);
+    await this.page.locator("//input[@type='password']").type(password);
     console.log('Clicking submit button');
     await this.page.locator(this.naukriSubmitButton).click();
   }
