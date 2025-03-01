@@ -6,9 +6,9 @@ class NaukriPage {
   }
 
   // URLs
-  naukriHomeURL = 'https://www.naukri.com/nlogin/login';
+  naukriHomeURL = 'https://www.naukri.com/';
   naukriHomePage = 'https://www.naukri.com/mnjuser/profile';
-
+  loginPage = "//a[@id='login_Layer']";
   // Login Page Elements
   naukriUsername = "//input[@id='usernameField']";
   naukriPassword = "//input[@id='passwordField']";
@@ -26,6 +26,9 @@ class NaukriPage {
     await this.page.goto(this.naukriHomeURL, { waitUntil: 'load' });
     console.log('Navigated to Naukri Login Page: ' + this.naukriHomeURL);
     await this.page.waitForLoadState('load');
+
+    //click on login button
+    await this.page.locator(this.loginPage).click();
 
     console.log('Filling in username');
     await this.page.locator("//input[@id='usernameField']").fill(username);
