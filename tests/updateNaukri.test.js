@@ -10,8 +10,8 @@ class NaukriPage {
   naukriHomePage = 'https://www.naukri.com/mnjuser/profile';
   loginPage = "//a[@id='login_Layer']";
   // Login Page Elements
-  naukriUsername = "//input[@id='usernameField']";
-  naukriPassword = "//input[@id='passwordField']";
+  naukriUsername = "//input[@placeholder='Enter your active Email ID / Username']";
+  naukriPassword = "//input[@placeholder='Enter your password']";
   naukriSubmitButton = "//button[@type='submit'][contains(text(),'Login')][1]";
 
   // Profile Page Elements
