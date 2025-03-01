@@ -22,12 +22,16 @@ class NaukriPage {
 
   // Login Method
   async login(username, password) {
+    console.log('Navigating to Naukri Login Page');
     await this.page.goto(this.naukriHomeURL, { waitUntil: 'load' });
-    console.log('Navigated to Naukri Login Page' + this.naukriHomeURL);
+    console.log('Navigated to Naukri Login Page: ' + this.naukriHomeURL);
     await this.page.waitForLoadState('load');
 
+    console.log('Filling in username');
     await this.page.locator(this.naukriUsername).fill(username);
+    console.log('Filling in password');
     await this.page.locator(this.naukriPassword).fill(password);
+    console.log('Clicking submit button');
     await this.page.locator(this.naukriSubmitButton).click();
   }
 }
@@ -37,20 +41,33 @@ test.describe('Update Naukri Profile', () => {
 
   test('Update Resume Headline', async ({ page }) => {
     naukriPage = new NaukriPage(page);
+    console.log('Starting login process');
     await naukriPage.login('mkirupaagar@gmail.com', 'Kirupa$278');
-    await page.locator(naukriPage.naukriCompleteProfile).click();
-    await page.locator(naukriPage.naukriResumeHeadlinesIcon).click();
+    console.log('Login successful');
 
+    console.log('Navigating to complete profile');
+    await page.locator(naukriPage.naukriCompleteProfile).click();
+    console.log('Clicked on complete profile');
+
+    console.log('Clicking on resume headlines icon');
+    await page.locator(naukriPage.naukriResumeHeadlinesIcon).click();
+    console.log('Clicked on resume headlines icon');
+
+    console.log('Fetching current headlines text');
     let headlinesText = await page.locator(naukriPage.naukriHeadlinesTextarea).textContent();
     console.log('Headlines Text: ', headlinesText);
 
     if (headlinesText) {
       if (headlinesText.endsWith('.')) {
+        console.log('Removing trailing period from headlines text');
         headlinesText = headlinesText.slice(0, -1);
       } else {
+        console.log('Adding period to headlines text');
         headlinesText = headlinesText + '.';
       }
+      console.log('Updating headlines text');
       await page.locator(naukriPage.naukriHeadlinesTextarea).fill(headlinesText);
+      console.log('Saving updated headlines text');
       await page.locator(naukriPage.naukriHeadlinesSaveButton).click();
     }
 
