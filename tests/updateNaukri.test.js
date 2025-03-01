@@ -25,7 +25,6 @@ class NaukriPage {
     console.log('Navigating to Naukri Login Page');
     await this.page.goto(this.naukriHomeURL);
     console.log('Navigated to Naukri Login Page: ' + this.naukriHomeURL);
-    await this.page.waitForLoadState('load');
 
     //click on login button
     await this.page.locator(this.loginPage).click();
