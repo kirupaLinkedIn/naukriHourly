@@ -40,7 +40,7 @@ class NaukriPage {
 }
 
 test.describe('Update Naukri Profile', () => {
-  test.setTimeout(60000); // Increase timeout to 60 seconds
+   test.setTimeout(60000); // Increase timeout to 60 seconds
 
   let naukriPage;
 
@@ -51,6 +51,7 @@ test.describe('Update Naukri Profile', () => {
     console.log('Login successful');
 
     console.log('Navigating to complete profile');
+    await page.waitForSelector(naukriPage.naukriCompleteProfile, { state: 'visible', timeout: 20000 });
     await page.locator(naukriPage.naukriCompleteProfile).click();
     console.log('Clicked on complete profile');
 
