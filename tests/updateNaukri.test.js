@@ -27,8 +27,9 @@ class NaukriPage {
     console.log('Navigated to Naukri Login Page: ' + this.naukriHomeURL);
 
     //click on login button
+    await this.page.waitForSelector(this.loginPage, { state: 'visible', timeout: 10000 });
     await this.page.locator(this.loginPage).click();
-
+    
     console.log('Filling in username');
     await this.page.locator("//input[contains(@placeholder,'Enter your active Email ID / Username')]").type(username);
     console.log('Filling in password');
@@ -39,6 +40,8 @@ class NaukriPage {
 }
 
 test.describe('Update Naukri Profile', () => {
+  test.setTimeout(60000); // Increase timeout to 60 seconds
+
   let naukriPage;
 
   test('Update Resume Headline', async ({ page }) => {
