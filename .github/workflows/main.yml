@@ -25,4 +25,4 @@ jobs:
         run: npx playwright install 
 
       - name: Run Playwright tests
-        run: npx playwright test --grep "Update Naukri Profile" --headed --project=chromium
+        run: npx playwright test --grep "Update Naukri Profile" --project=chromium
