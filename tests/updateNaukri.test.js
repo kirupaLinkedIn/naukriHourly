@@ -51,7 +51,8 @@ test.describe('Update Naukri Profile', () => {
     console.log('Login successful');
 
     console.log('Navigating to complete profile');
-    await page.waitForSelector(naukriPage.naukriCompleteProfile, { state: 'visible', timeout: 20000 });
+    //wait for 5 seconds
+    await page.waitForTimeout(10000);
     await page.locator(naukriPage.naukriCompleteProfile).click();
     console.log('Clicked on complete profile');
 
