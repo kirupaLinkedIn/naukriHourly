@@ -25,7 +25,7 @@ jobs:
         run: npx playwright install 
 
       - name: Run Playwright tests
-        run:  npx playwright test --headed  --trace on --project=chromium
+        run:  npx playwright test  --trace on --project=chromium
 
       - name: Upload test artifacts (videos, screenshots, traces)
         if: always()
