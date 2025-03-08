@@ -47,6 +47,7 @@ test.describe('Update Naukri Profile', () => {
   let naukriPage
 
   test('Update Resume Headline', async ({ browser }) => {
+    
     const context = await browser.newContext({ storageState: './auth.json' })
     const page = await context.newPage()
 
