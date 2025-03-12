@@ -2,8 +2,9 @@ name: Playwright Tests
 
 on:
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+    - cron: '0 * * * *'  # Runs every hour at the start of the hour (e.g., 1:00, 2:00, 3:00, etc.)
+  workflow_dispatch:     # Allows you to manually trigger the workflow via GitHub UI
+
 
 jobs:
   test:
@@ -19,10 +20,12 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: npx playwright install
+
 
       - name: Install Playwright Browsers
         run: npx playwright install 
+        
 
       - name: Run Playwright tests
         run:  npx playwright test  --trace on --project=chromium
